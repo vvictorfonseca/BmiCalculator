@@ -8,7 +8,8 @@ interface IPropsBmiInfo {
 export default function BmiInfo(props: IPropsBmiInfo) {
   return (
     <View style={styles.bmiInfoBox}>
-      <Text style={styles.bmiInfoText}>Seu IMC é de {props.value.toFixed(1)} Kg/m² </Text>
+      <Text style={styles.bmiInfoText}>Seu IMC é de:</Text>
+      <Text style={styles.bmiValue}>{props.value.toFixed(1)} Kg/m²</Text>
     </View>
   )
 }

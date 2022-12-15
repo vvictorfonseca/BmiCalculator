@@ -11,5 +11,10 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     color:'#e03939'
+  },
+  bmiValue: {
+    fontSize: 40,
+    fontWeight: 'bold',
+    color:'#e03939'
   }
 })

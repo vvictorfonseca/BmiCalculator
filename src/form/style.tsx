@@ -1,11 +1,15 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  mainBox: {
+    width: "100%",
+    alignItems: 'center'
+  },
   formBox: {
     width: '90%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 45,
+    marginTop: 20,
     margin: "auto"
   },
   formText: {
@@ -64,7 +68,7 @@ export const styles = StyleSheet.create({
     margin: "auto"
   },
   shareButtonText: {
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: '500'
   }
 })

@@ -49,77 +49,95 @@ export default function Form() {
   }
 
   return (
-    <View style={styles.formBox}>
-      <Text style={styles.formText}>Altura</Text>
+    <View style={styles.mainBox}>
       {
-        error ? (
-          height == "" ? (
-            <Text style={styles.inputErrorText}>Esse campo é obrigatório</Text>
-          ) : isNaN(parseFloat(height)) ? (
-            <Text style={styles.inputErrorText}>Os dados inseridos não são númericos!</Text>
-          ) : (
-            null
-          )
-        ) : (
-          null
-        )
-      }
-      <TextInput
-        style={styles.formInput}
-        keyboardType='numeric'
-        maxLength={4}
-        placeholder="Ex: 1.80"
-        value={height}
-        onChangeText={setHeight}
-      />
-      <Text style={styles.formText}>Peso</Text>
-      {
-        error ? (
-          weight == "" ? (
-            <Text style={styles.inputErrorText}>Esse campo é obrigatório</Text>
-          ) : isNaN(parseFloat(weight)) ? (
-            <Text style={styles.inputErrorText}>Os dados inseridos não são númericos!</Text>
-          ) : (
-            null
-          )
-        ) : (
-          null
-        )
-      }
-      <TextInput
-        style={styles.formInput}
-        keyboardType='numeric'
-        maxLength={5}
-        placeholder="Ex: 70.55"
-        value={weight}
-        onChangeText={setWeight}
-      />
+        imcValue == null ? (
 
-      <TouchableOpacity style={styles.formButton} onPress={() => validateInputs()}>
-        <Text style={styles.formButtonText}>{imcValue ? 'Calcular Novamente' : 'Calcular'}</Text>
-      </TouchableOpacity>
+          <View style={styles.formBox}>
 
-      {
-        error ? (
-          <Text style={styles.formErrorText}>Preencha os dados corretamente!</Text>
-        ) : (
-          <></>
-        )
-      }
+            <Text style={styles.formText}>Altura</Text>
+            {
+              error ? (
+                height == "" ? (
+                  <Text style={styles.inputErrorText}>Esse campo é obrigatório</Text>
+                ) : isNaN(parseFloat(height)) ? (
+                  <Text style={styles.inputErrorText}>Os dados inseridos não são númericos!</Text>
+                ) : (
+                  null
+                )
+              ) : (
+                null
+              )
+            }
+            <TextInput
+              style={styles.formInput}
+              keyboardType='numeric'
+              maxLength={4}
+              placeholder="Ex: 1.80"
+              value={height}
+              onChangeText={setHeight}
+            />
 
-      {
-        imcValue !== undefined ? (
-          <>
-            <BmiInfo value={imcValue} />
-            <TouchableOpacity style={styles.shareButton} onPress={() => onShare()}>
-              <Text style={styles.shareButtonText}>Compartilhar</Text>
+            <Text style={styles.formText}>Peso</Text>
+            {
+              error ? (
+                weight == "" ? (
+                  <Text style={styles.inputErrorText}>Esse campo é obrigatório</Text>
+                ) : isNaN(parseFloat(weight)) ? (
+                  <Text style={styles.inputErrorText}>Os dados inseridos não são númericos!</Text>
+                ) : (
+                  null
+                )
+              ) : (
+                null
+              )
+            }
+            <TextInput
+              style={styles.formInput}
+              keyboardType='numeric'
+              maxLength={5}
+              placeholder="Ex: 70.55"
+              value={weight}
+              onChangeText={setWeight}
+            />
+
+            <TouchableOpacity style={styles.formButton} onPress={() => validateInputs()}>
+              <Text style={styles.formButtonText}>{imcValue ? 'Calcular Novamente' : 'Calcular'}</Text>
             </TouchableOpacity>
-          </>
+
+            {
+              error ? (
+                <Text style={styles.formErrorText}>Preencha os dados corretamente!</Text>
+              ) : (
+                <></>
+              )
+            }
+          </View>
+
         ) : (
-          <></>
+
+          <View style={styles.formBox}>
+
+
+            {
+              imcValue !== undefined ? (
+                <>
+                  <BmiInfo value={imcValue} />
+                  <TouchableOpacity style={styles.shareButton} onPress={() => onShare()}>
+                    <Text style={styles.shareButtonText}>Compartilhar</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.formButton} onPress={() => validateInputs()}>
+                    <Text style={styles.formButtonText}>{imcValue ? 'Calcular Novamente' : 'Calcular'}</Text>
+                  </TouchableOpacity>
+                </>
+              ) : (
+                <></>
+              )
+            }
+          </View>
+
         )
       }
-
     </View>
   )
 }
