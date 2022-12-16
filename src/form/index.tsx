@@ -1,16 +1,24 @@
 import React from "react";
 import { useState } from "react";
-import { Text, TextInput, View, TouchableOpacity, Vibration, Share } from "react-native";
+import { Text, TextInput, View, TouchableOpacity, Vibration, Share, FlatList, ListRenderItemInfo } from "react-native";
 
 import { styles } from "./style";
 
 import BmiInfo from "../bmiInfo";
+
+import ImcList from "./imcList/index"
+
+export interface IimcList {
+  id: number;
+  value: number;
+}
 
 export default function Form() {
   const [weight, setWeight] = useState<string>("")
   const [height, setHeight] = useState<string>("")
   const [error, setError] = useState<boolean>(false)
   const [imcValue, setImcValue] = useState<number>()
+  const [imcList, setImcList] = useState<IimcList[]>([])
 
   const onShare = async () => {
     try {
@@ -39,13 +47,20 @@ export default function Form() {
   }
 
   function calculateImc() {
-    setImcValue(parseInt(weight.replace(",", ".")) / (parseFloat(height.replace(",", ".")) * parseFloat(height.replace(",", "."))))
-  }
+    let imc = parseInt(weight.replace(",", ".")) / (parseFloat(height.replace(",", ".")) * parseFloat(height.replace(",", ".")))
+    let id = new Date().getTime()
+    setImcList([...imcList, {id: id, value: parseFloat(imc.toFixed(1))}])
+    setImcValue(imc)
+  } 
 
   function refresh() {
     setHeight("")
     setWeight("")
     setImcValue(undefined)
+  }
+
+  function renderImcList({ item }: ListRenderItemInfo<IimcList>) {
+    return <ImcList value={item.value} key={item.id} />
   }
 
   return (
@@ -117,8 +132,6 @@ export default function Form() {
         ) : (
 
           <View style={styles.formBox}>
-
-
             {
               imcValue !== undefined ? (
                 <>
@@ -129,6 +142,13 @@ export default function Form() {
                   <TouchableOpacity style={styles.formButton} onPress={() => validateInputs()}>
                     <Text style={styles.formButtonText}>{imcValue ? 'Calcular Novamente' : 'Calcular'}</Text>
                   </TouchableOpacity>
+
+                  <FlatList
+                    contentContainerStyle={styles.flatListBox}
+                    data={imcList.reverse()}
+                    renderItem={renderImcList}
+                  />
+  
                 </>
               ) : (
                 <></>

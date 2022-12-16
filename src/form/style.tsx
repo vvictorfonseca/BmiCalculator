@@ -37,11 +37,12 @@ export const styles = StyleSheet.create({
     marginTop: 40,
     backgroundColor: "#e03939",
     borderRadius: 25,
-    margin: "auto"
+    margin: "auto",
   },
   formButtonText: {
     fontSize: 18,
-    fontWeight: '500'
+    fontWeight: '500',
+    color: "#fff"
   },
   formErrorText: {
     fontSize: 14,
@@ -69,6 +70,12 @@ export const styles = StyleSheet.create({
   },
   shareButtonText: {
     fontSize: 14,
-    fontWeight: '500'
+    fontWeight: '500',
+    color: "#fff"
+  },
+  flatListBox: {
+    justifyContent: 'center',
+    width: "100%",
+    marginTop: 25
   }
 })
