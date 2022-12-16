@@ -48,8 +48,7 @@ export default function Form() {
 
   function calculateImc() {
     let imc = parseInt(weight.replace(",", ".")) / (parseFloat(height.replace(",", ".")) * parseFloat(height.replace(",", ".")))
-    let id = new Date().getTime()
-    setImcList([...imcList, {id: id, value: parseFloat(imc.toFixed(1))}])
+    setImcList([...imcList, {id: new Date().getTime(), value: parseFloat(imc.toFixed(1))}])
     setImcValue(imc)
   } 
 
@@ -60,7 +59,7 @@ export default function Form() {
   }
 
   function renderImcList({ item }: ListRenderItemInfo<IimcList>) {
-    return <ImcList value={item.value} key={item.id} />
+    return <ImcList value={item.value} />
   }
 
   return (
@@ -149,6 +148,7 @@ export default function Form() {
                     contentContainerStyle={styles.flatListBox}
                     data={imcList.reverse()}
                     renderItem={renderImcList}
+                    keyExtractor={(item) => `${item.id}`}
                   />  
                 </>
               ) : (
