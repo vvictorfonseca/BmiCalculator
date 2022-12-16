@@ -6,11 +6,11 @@ export const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red',
-
   },
   imcListText: {
     width: "100%",
-    fontSize: 20,
+    fontSize: 22,
+    color: "#e03939",
+    fontWeight: 'bold'
   }
 })

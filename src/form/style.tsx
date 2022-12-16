@@ -76,6 +76,7 @@ export const styles = StyleSheet.create({
   flatListBox: {
     justifyContent: 'center',
     width: "100%",
-    marginTop: 25
+    marginTop: 10,
+    marginBottom: 25
   }
 })

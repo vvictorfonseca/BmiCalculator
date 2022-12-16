@@ -5,8 +5,8 @@ import { Text, TextInput, View, TouchableOpacity, Vibration, Share, FlatList, Li
 import { styles } from "./style";
 
 import BmiInfo from "../bmiInfo";
-
 import ImcList from "./imcList/index"
+import Separator from "./separator";
 
 export interface IimcList {
   id: number;
@@ -144,16 +144,18 @@ export default function Form() {
                   </TouchableOpacity>
 
                   <FlatList
+                    ItemSeparatorComponent={Separator}
+                    showsVerticalScrollIndicator={false}
                     contentContainerStyle={styles.flatListBox}
                     data={imcList.reverse()}
                     renderItem={renderImcList}
-                  />
-  
+                  />  
                 </>
               ) : (
                 <></>
               )
             }
+          
           </View>
 
         )

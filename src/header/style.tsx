@@ -10,6 +10,6 @@ export const styles = StyleSheet.create({
     marginTop: 45,
     fontSize: 24,
     fontWeight: "700",
-    color: "#e03939"
+    color: "#e03939",
   }
 })
